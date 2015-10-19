@@ -1,0 +1,4 @@
+name: Check User Role Demo Module
+type: module
+description: 'Check if a user has a role in Drupal 8.'
+core: 8.x

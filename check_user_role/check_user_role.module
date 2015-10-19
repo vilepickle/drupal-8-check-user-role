@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ * Demo functionality gives non-admins no permission to update their username/password
+ * by unsetting it when they view their profile edit screen.
+ */
+function check_user_role_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $user = \Drupal::currentUser()->getRoles();
+  if(!in_array("administrator", $user) && $form_id == 'user_form') {
+  	unset($form['account']);
+  }
+}
